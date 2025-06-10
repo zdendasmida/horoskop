@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mystické věštění - horoskopy, křišťálová koule, tarot karty a nebeská brána. Odhal svou budoucnost!">
+    <meta name="keywords" content="horoskop, tarot, věštění, křišťálová koule, znamení zvěrokruhu, budoucnost">
+    <meta name="author" content="Mystické Věštění">
+    <meta property="og:title" content="🔮 Mystické Věštění - Odhal svou budoucnost">
+    <meta property="og:description" content="Kompletní mystické věštění - horoskopy, tarot, křišťálová koule a nebeská brána">
+    <meta property="og:type" content="website">
+    <title>🔮 Mystické Věštění - Horoskopy, Tarot, Křišťálová Koule</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 0, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 150, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #000000 0%, #1a0033 25%, #000000 50%, #330066 75%, #000000 100%);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0"/></filter></defs><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            background: linear-gradient(45deg, #9400d3, #ff00ff, #00ffff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(148, 0, 211, 0.6), 0 0 60px rgba(255, 0, 255, 0.4);
+            animation: mysticalGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes mysticalGlow {
+            0% { 
+                text-shadow: 0 0 20px rgba(148, 0, 211, 0.6), 0 0 40px rgba(255, 0, 255, 0.4);
+                filter: brightness(1);
+            }
+            100% { 
+                text-shadow: 0 0 30px rgba(148, 0, 211, 0.8), 0 0 60px rgba(255, 0, 255, 0.6), 0 0 90px rgba(0, 255, 255, 0.3);
+                filter: brightness(1.2);
+            }
+        }
+
+        .header p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 25px;
+            padding: 5px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(148, 0, 211, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-tab {
+            flex: 1;
+            padding: 12px 8px;
+            background: transparent;
+            border: none;
+            color: #fff;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(45deg, #9400d3, #ff00ff);
+            box-shadow: 0 4px 20px rgba(148, 0, 211, 0.5);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(148, 0, 211, 0.3);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .zodiac-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .zodiac-sign {
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid transparent;
+            border-radius: 50%;
+            padding: 20px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+        }
+
+        .zodiac-sign::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(148, 0, 211, 0.3), transparent);
+            transition: left 0.5s;
+            border-radius: 50%;
+        }
+
+        .zodiac-sign:hover::before {
+            left: 100%;
+        }
+
+        .zodiac-sign:hover, .zodiac-sign.selected {
+            border-color: #9400d3;
+            background: rgba(148, 0, 211, 0.2);
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(148, 0, 211, 0.5);
+        }
+
+        .zodiac-sign .emoji {
+            font-size: 2.8rem;
+            display: block;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
+            position: relative;
+            z-index: 3;
+        }
+
+        .zodiac-name {
+            position: relative;
+            z-index: 3;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            line-height: 1.2;
+        }
+
+        .crystal-ball {
+            width: 200px;
+            height: 200px;
+            margin: 30px auto;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(148, 0, 211, 0.6), rgba(0, 0, 0, 0.9)),
+                radial-gradient(circle at 70% 70%, rgba(0, 255, 255, 0.3), transparent);
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 
+                0 0 60px rgba(148, 0, 211, 0.6),
+                inset 0 0 60px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .crystal-ball:hover {
+            transform: scale(1.05);
+            box-shadow: 
+                0 0 100px rgba(148, 0, 211, 0.8),
+                0 0 200px rgba(255, 0, 255, 0.4),
+                inset 0 0 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .crystal-ball::before {
+            content: '';
+            position: absolute;
+            top: 15%;
+            left: 20%;
+            width: 35%;
+            height: 35%;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            filter: blur(20px);
+        }
+
+        .crystal-ball::after {
+            content: '';
+            position: absolute;
+            bottom: 10%;
+            right: 20%;
+            width: 20%;
+            height: 20%;
+            background: rgba(0, 255, 255, 0.3);
+            border-radius: 50%;
+            filter: blur(15px);
+        }
+
+        .crystal-ball.active {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .tarot-deck {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .tarot-card {
+            width: 70px;
+            height: 105px;
+            background: linear-gradient(135deg, #4a148c, #7b1fa2);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            border: 2px solid #ffd700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+            text-align: center;
+            overflow: hidden;
+            background-image: 
+                linear-gradient(45deg, rgba(148, 0, 211, 0.3) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(148, 0, 211, 0.3) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(148, 0, 211, 0.3) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(148, 0, 211, 0.3) 75%);
+            background-size: 10px 10px;
+            background-position: 0 0, 0 5px, 5px -5px, -5px 0px;
+        }
+
+        .tarot-card::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            background: linear-gradient(135deg, #4a148c, #7b1fa2);
+            border-radius: 5px;
+            z-index: 1;
+        }
+
+        .tarot-card .card-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .tarot-card .card-icon {
+            font-size: 2rem;
+        }
+
+        .tarot-card .card-name {
+            font-size: 0.65rem;
+            line-height: 1.1;
+            font-weight: bold;
+        }
+
+        .tarot-card:hover {
+            transform: translateY(-10px) rotate(5deg);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+        }
+
+        .tarot-card.flipped {
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            color: #333;
+            transform: rotateY(180deg);
+        }
+
+        .tarot-card.flipped::before {
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+        }
+
+        .input-group {
+            margin: 20px 0;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #ff00ff;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+        }
+
+        .input-group input, .input-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(148, 0, 211, 0.3);
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .input-group input:focus, .input-group textarea:focus {
+            outline: none;
+            border-color: #9400d3;
+            box-shadow: 0 0 20px rgba(148, 0, 211, 0.4);
+        }
+
+        .input-group input::placeholder, .input-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #9400d3, #ff00ff, #9400d3);
+            background-size: 200% 200%;
+            border: none;
+            border-radius: 25px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 15px 0;
+            box-shadow: 0 4px 20px rgba(148, 0, 211, 0.4);
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(148, 0, 211, 0.6);
+        }
+
+        #horoscope-result {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #9400d3;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+            min-height: 400px !important;
+            max-height: 700px !important;
+            overflow-y: auto;
+            display: block;
+            box-shadow: 
+                0 0 30px rgba(148, 0, 211, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            width: 100%;
+        }
+
+        .result {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #9400d3;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+            min-height: 350px;
+            max-height: 600px;
+            overflow-y: auto;
+            display: block;
+            box-shadow: 
+                0 0 30px rgba(148, 0, 211, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            width: 100%;
+        }
+
+        .loading {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .support-section {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+            backdrop-filter: blur(15px);
+        }
+
+        .support-section h3 {
+            color: #ffd700;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .paypal-btn {
+            background: #0070ba;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .paypal-btn:hover {
+            background: #005ea6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 112, 186, 0.3);
+        }
+
+        .angel-email {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .angel-email h3 {
+            color: #87ceeb;
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(135, 206, 235, 0.5);
+        }
+
+        .message-counter {
+            background: rgba(135, 206, 235, 0.1);
+            border: 1px solid rgba(135, 206, 235, 0.3);
+            border-radius: 15px;
+            padding: 10px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #87ceeb;
+        }
+
+        .sending-animation {
+            text-align: center;
+            margin: 20px 0;
+            height: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .angel-flying {
+            font-size: 2rem;
+            animation: flyToHeaven 3s ease-in-out;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .stars-trail {
+            font-size: 1.2rem;
+            animation: sparkleTrail 3s ease-in-out;
+            position: absolute;
+            left: 50%;
+            top: 60%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes flyToHeaven {
+            0% {
+                transform: translate(-50%, 50px) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(-50%, -20px) scale(1.2);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(-50%, -100px) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        @keyframes sparkleTrail {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, 20px);
+            }
+            30% {
+                opacity: 1;
+                transform: translate(-50%, 0px);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50px);
+            }
+        }
+
+        .angel-textarea {
+            width: 100%;
+            height: 120px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(135, 206, 235, 0.3);
+            border-radius: 15px;
+            padding: 15px;
+            color: #fff;
+            font-size: 1rem;
+            resize: none;
+            margin-bottom: 15px;
+        }
+
+        .angel-textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .angel-btn {
+            background: linear-gradient(45deg, #87ceeb, #add8e6);
+            color: #333;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .angel-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(135, 206, 235, 0.4);
+        }
+
+        .language-footer {
+            text-align: center;
+            margin: 30px 0 20px 0;
+            padding: 20px 0;
+        }
+
+        .lang-btn {
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(148, 0, 211, 0.4);
+            color: #fff;
+            padding: 10px 18px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .lang-btn:hover {
+            border-color: #9400d3;
+            background: rgba(148, 0, 211, 0.2);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(148, 0, 211, 0.3);
+        }
+
+        .lang-btn:active {
+            transform: translateY(0);
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background: radial-gradient(circle, #fff 0%, #9400d3 50%, transparent 100%);
+            border-radius: 50%;
+            animation: twinkle 4s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { 
+                opacity: 0.2; 
+                transform: scale(1);
+                filter: brightness(0.8);
+            }
+            25% { 
+                opacity: 1; 
+                transform: scale(1.5);
+                filter: brightness(1.5);
+            }
+            50% { 
+                opacity: 0.6; 
+                transform: scale(1.2);
+                filter: brightness(1.2);
+            }
+            75% { 
+                opacity: 0.8; 
+                transform: scale(1.3);
+                filter: brightness(1.3);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1 id="main-title">🔮 Mystické Věštění</h1>
+            <p id="main-subtitle">Odhal svou budoucnost</p>
+        </div>
+
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('horoscope')" id="tab-horoscope">🌟 Horoskop</button>
+            <button class="nav-tab" onclick="showTab('crystal')" id="tab-crystal">🔮 Koule</button>
+            <button class="nav-tab" onclick="showTab('tarot')" id="tab-tarot">🃏 Tarot</button>
+        </div>
+
+        <!-- Horoskop -->
+        <div id="horoscope" class="tab-content active">
+            <div class="card">
+                <h3 id="horoscope-title">Vyber své znamení</h3>
+                <div class="zodiac-grid">
+                    <div class="zodiac-sign" onclick="selectZodiac('beran')">
+                        <span class="emoji">♈</span>
+                        <span class="zodiac-name" data-cs="Beran" data-en="Aries">Beran</span>
+                    </div>
+                    <div class="zodiac-sign" onclick="selectZodiac('byk')">
+                        <span class="emoji">♉</span>
+                        <span class="zodiac-name" data-cs="Býk" data-en="Taurus">Býk</span>
+                    </div>
+                    <div class="zodiac-sign" onclick="selectZodiac('blizenci')">
+                        <span class="emoji">♊</span>
+                        <span class="zodiac-name" data-cs="Blíženci" data-en="Gemini">Blíženci</span>
+                    </div>
+                    <div class="zodiac-sign" onclick="selectZodiac('rak')">
+                        <span class="emoji">♋</span>
+                        <span class="zodiac-name" data-cs="Rak" data-en="Cancer">Rak</span>
+                    </div>
+                    <div class="zodiac-sign" onclick="selectZodiac('lev')">
+                        <span class="emoji">♌</span>
+                        <span class="zodiac-name" data-cs="Lev" data-en="Leo">Lev</span>
+                    </div>
+                    <div class="zodiac-sign" onclick="selectZodiac('panna')">
+                        <span class="emoji">♍</span>
+                        <span class="zodiac-name" data-cs="Panna" data-en="Virgo">Panna</span>
+                    </div>
+                    <div class="zodiac-sign" onclick="selectZodiac('vahy')">
+                        <span class="emoji">♎</span>
+                        <span class="zodiac-name" data-cs="Váhy" data-en="Libra">Váhy</span>
+                    </div>
+                    <div class="zodiac-sign" onclick="selectZodiac('stir')">
+                        <span class="emoji">♏</span>
+                        <span class="zodiac-name" data-cs="Štír" data-en="Scorpio">Štír</span>
+                    </div>
+                    <div class="zodiac-sign" onclick="selectZodiac('strelec')">
+                        <span class="emoji">♐</span>
+                        <span class="zodiac-name" data-cs="Střelec" data-en="Sagittarius">Střelec</span>
+                    </div>
+                    <div class="zodiac-sign" onclick="selectZodiac('kozoroh')">
+                        <span class="emoji">♑</span>
+                        <span class="zodiac-name" data-cs="Kozoroh" data-en="Capricorn">Kozoroh</span>
+                    </div>
+                    <div class="zodiac-sign" onclick="selectZodiac('vodnar')">
+                        <span class="emoji">♒</span>
+                        <span class="zodiac-name" data-cs="Vodnář" data-en="Aquarius">Vodnář</span>
+                    </div>
+                    <div class="zodiac-sign" onclick="selectZodiac('ryby')">
+                        <span class="emoji">♓</span>
+                        <span class="zodiac-name" data-cs="Ryby" data-en="Pisces">Ryby</span>
+                    </div>
+                </div>
+                <button class="btn" onclick="getHoroscope()" id="horoscope-btn">Získat horoskop</button>
+                <div id="horoscope-result" class="result" style="display: none;"></div>
+            </div>
+        </div>
+
+        <!-- Křišťálová koule -->
+        <div id="crystal" class="tab-content">
+            <div class="card">
+                <h3 id="crystal-title">Křišťálová koule</h3>
+                <div class="input-group">
+                    <label id="crystal-label">Polož svou otázku:</label>
+                    <textarea id="crystal-question" placeholder="Co tě trápí? Zeptej se křišťálové koule..." rows
